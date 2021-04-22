@@ -1,0 +1,9 @@
+.footer_position {
+  padding-bottom: 67px;
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .footer_position {
+      padding-bottom: 40px;
+    }
+}

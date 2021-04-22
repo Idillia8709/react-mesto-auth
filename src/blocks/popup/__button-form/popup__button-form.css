@@ -1,0 +1,30 @@
+.popup__button-form {
+  max-width: 358px;
+  width: 358px;
+  height: 50px;
+  background: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.popup__button-save:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .popup__button-form {
+    max-width: 238px;
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

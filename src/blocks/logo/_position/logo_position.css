@@ -1,0 +1,9 @@
+.logo_position {
+  margin-bottom: 41px;
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .logo_position {
+      margin-bottom: 31.6px;
+      margin-left: 27px;
+    }
+}

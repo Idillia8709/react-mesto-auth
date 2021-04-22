@@ -1,0 +1,8 @@
+.places_position {
+    margin: 51px auto 67px auto;
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .places_position {
+        margin: 36px auto 48px auto;
+    }
+ }

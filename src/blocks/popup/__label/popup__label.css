@@ -1,0 +1,14 @@
+.popup__label {
+  display: block;
+  position: relative;
+  max-width: 358px;
+  margin-bottom: 30px;
+}
+.popup__label:last-of-type {
+  margin-bottom: 48px;
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .popup__label {
+    max-width: 238px;
+  }
+}    
