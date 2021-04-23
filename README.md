@@ -17,7 +17,7 @@ grid;
 реализовано api для использования данных с сервера;
 использованы функциональные компоненты React.
 
-Ссылка на GitHub Pages: 
+Ссылка на GitHub Pages: https://idillia8709.github.io/mesto-react/
 
 Команда для запуска и работы с проектом: 
 - npm start

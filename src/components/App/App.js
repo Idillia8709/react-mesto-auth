@@ -4,12 +4,14 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import ImagePopup from '../ImagePopup/ImagePopup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
+
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isCardPopupOpen, setIsCardPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
+
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -28,6 +30,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setSelectedCard({});
     setIsCardPopupOpen(false);
   }
 
@@ -93,10 +96,10 @@ function App() {
           title="Вы уверены?"
           onClose={closeAllPopups}
         />
-        <ImagePopup 
-        card={ selectedCard }
-        isOpen={ isCardPopupOpen }
-        onClose={ closeAllPopups }
+        <ImagePopup
+          card={selectedCard}
+          isOpen={isCardPopupOpen}
+          onClose={closeAllPopups}
         />
         <Footer />
       </div>

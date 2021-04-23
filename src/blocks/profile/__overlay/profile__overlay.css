@@ -5,6 +5,7 @@
   border-radius: 50px;
   box-sizing: border-box;
   overflow: hidden;
+  cursor: pointer;
 }
 .profile__overlay:before {
   content: '';

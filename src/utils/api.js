@@ -1,4 +1,4 @@
-  class Api {
+class Api {
   constructor(config) {
     this.url = config.url;
     this.headers = config.headers;
@@ -40,7 +40,7 @@
       .then(res => this._parseResponse(res))
   }
 
-  installLikeCard(id) {
+  addCardLike(id) {
     return fetch(`${this.url}/cards/likes/${id}`, {
       method: 'PUT',
       headers: this.headers

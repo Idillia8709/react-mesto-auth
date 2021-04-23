@@ -1,39 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import Card from '../Card/Card';
+
 export default
   function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
-  const [userName, setUserName] = useState('Жак-Ив Кусто');
-  const [userDescription, setUserDescription] = useState('Исследователь океана');
-  const [userAvatar, setUserAvatar] = useState('./images/image.jpg');
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
   const [cards, setCards] = useState([]);
   useEffect(() => {
     api.getCardList()
       .then((res) => {
-        const data = res.map((item) => ({
-          _id: item._id,
-          name: item.name,
-          link: item.link,
-          likes: item.likes,
-          alt: item.alt
-        }));
-        setCards(data);
+        setCards(res);
       })
       .catch(err => console.log('Ошибка:', err.message));
 
     api.getUserInfo()
       .then((res) => {
-        const data = {
-          name: res.name,
-          about: res.about,
-          avatar: res.avatar
-        };
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
+        setUserName(res.name);
+        setUserDescription(res.about);
+        setUserAvatar(res.avatar);
       })
       .catch(err => console.log('Ошибка:', err.message))
-    }, []);
+  }, []);
 
   return (
     <main className="main">
@@ -53,9 +42,9 @@ export default
       <section className="places places_position">
         <ul className="elements">
           {cards.map(card =>
-            <Card 
-            key={ card._id } {...card}
-            onCardClick={ onCardClick }
+            <Card
+              key={card._id} {...card}
+              onCardClick={onCardClick}
             />
           )}
         </ul>
