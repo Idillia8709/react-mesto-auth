@@ -40,6 +40,14 @@ class Api {
       .then(res => this._parseResponse(res))
   }
 
+  changeLikeCardStatus(cardId, isLiked) {
+    return fetch(`${this.url}/cards/likes/${cardId}`, {
+      method: isLiked ? 'PUT' : 'DELETE',
+      headers: this.headers
+    })
+      .then(res => this._parseResponse(res))
+  }
+
   addCardLike(id) {
     return fetch(`${this.url}/cards/likes/${id}`, {
       method: 'PUT',

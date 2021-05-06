@@ -1,41 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import api from '../../utils/api';
+import React from 'react';
 import Card from '../Card/Card';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export default
-  function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    api.getCardList()
-      .then((res) => {
-        setCards(res);
-      })
-      .catch(err => console.log('Ошибка:', err.message));
-
-    api.getUserInfo()
-      .then((res) => {
-        setUserName(res.name);
-        setUserDescription(res.about);
-        setUserAvatar(res.avatar);
-      })
-      .catch(err => console.log('Ошибка:', err.message))
-  }, []);
-
+export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onCardLike, onCardDelete, onCardDeleteClick }) {
+  const currentUser = React.useContext(CurrentUserContext);
   return (
     <main className="main">
       <section className="profile profile_position">
         <div className="profile__overlay" onClick={onEditAvatar}>
-          <img className="profile__avatar" src={userAvatar} alt={userName} />
+          <img className="profile__avatar" src={currentUser.avatar} alt={currentUser.name} />
         </div>
         <div className="profile__description">
           <div className="profile__edit">
-            <h1 className="profile__title">{userName}</h1>
+            <h1 className="profile__title">{currentUser.name}</h1>
             <button onClick={onEditProfile} type="button" className="profile__button-edit"></button>
           </div>
-          <p className="profile__subtitle">{userDescription}</p>
+          <p className="profile__subtitle">{currentUser.about}</p>
         </div>
         <button onClick={onAddPlace} type="button" className="profile__button-add"></button>
       </section>
@@ -45,6 +25,8 @@ export default
             <Card
               key={card._id} {...card}
               onCardClick={onCardClick}
+              onCardLike={onCardLike}
+              onCardDeleteClick={onCardDeleteClick}
             />
           )}
         </ul>
@@ -52,3 +34,4 @@ export default
     </main>
   )
 }
+
