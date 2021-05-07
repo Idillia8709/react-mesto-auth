@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const avatarRef = useRef();

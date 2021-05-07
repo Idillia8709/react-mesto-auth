@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const [namePlace, setNamePlace] = useState('');

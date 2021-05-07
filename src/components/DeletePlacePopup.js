@@ -1,5 +1,5 @@
 import React from 'react';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 
 export default function DeletePlacePopup({ card, isOpen, onClose, onCardDelete }) {
   function handleSubmit(event) {
