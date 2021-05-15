@@ -6,8 +6,3 @@
   flex-direction: column;
   justify-content: left;
 }
-@media screen and (max-width: 767px) and (min-width: 320px) {
-  .footer {
-    width: calc(100% - 19px * 2);
-  }
-}

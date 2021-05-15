@@ -1,0 +1,9 @@
+.register__signup {
+  color: #FFFFFF;
+  margin-left: 5px;
+  text-decoration: none;
+}
+.register__signup:hover {
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}

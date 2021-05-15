@@ -28,6 +28,7 @@
 @import url('../popup/_type/popup_type_image.css');
 @import url('../popup/_type/popup_type_deleteCard.css');
 @import url('../popup/_type/popup_type_avatar.css');
+@import url('../popup/_type/popup_typy_infoTooltip.css');
 .popup {
   display: flex;
   position: fixed;

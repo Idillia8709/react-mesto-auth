@@ -1,0 +1,16 @@
+.header__nav-links {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  list-style-type: none;
+}
+
+@media screen and (max-width: 460px) and (min-width: 320px) {
+  .header__nav-links {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+

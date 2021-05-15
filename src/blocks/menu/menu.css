@@ -1,0 +1,13 @@
+@import url('./__item/menu__item.css');
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #FFFFFF;
+}

@@ -1,8 +1,11 @@
 @import url('../header/_position/header_position.css');
+@import url('../header/__nav/header__nav.css');
+@import url('../header/__nav-links/header__nav-links.css');
+@import url('../header/__nav-link/header__nav-link.css');
 .header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    border-bottom: 1px solid #545454;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #545454;
 }

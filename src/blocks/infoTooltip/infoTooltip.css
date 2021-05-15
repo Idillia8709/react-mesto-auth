@@ -1,0 +1,22 @@
+@import url('./__logo/infoTooltip__logo.css');
+@import url('./__title/infoTooltip__title.css');
+@import url('./__button-exit/infoTooltip__button-exit.css');
+.infoTooltip {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 430px;
+  background-color: #ffffff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .infoTooltip {
+    max-width: 282px;    
+  }
+}
