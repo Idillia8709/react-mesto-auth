@@ -15,14 +15,23 @@ export default function Login({ onLogin }) {
     });
   }
 
+  function clearForm() {
+    setLoginData({
+      email: '',
+      password: '',
+    });
+    setMessage('');
+  }
+
   function handleSubmit(event) {
-    // setMessage('');
+    setMessage('');
     event.preventDefault();
     if (!loginData.email || !loginData.password) {
       return;
     }
     onLogin(loginData)
       .catch(err => setMessage(err.message || 'Что-то пошло не так!'));
+    clearForm();
 
   }
 

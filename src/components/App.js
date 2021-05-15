@@ -50,7 +50,7 @@ export default function App() {
       })
       .catch(err => console.log('Ошибка:', err.message));
   }, []);
-  
+
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
@@ -112,8 +112,7 @@ export default function App() {
     if (owner) {
       api.deleteCard(card._id)
         .then(() => {
-          const newCards = cards.filter(({ _id }) => _id !== card._id);
-          setCards(newCards);
+         setCards(cards => cards.filter(({ _id }) => _id !== card._id)) 
           closeAllPopups();
         })
         .catch(err => console.log('Ошибка:', err.message))
