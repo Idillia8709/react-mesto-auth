@@ -18,7 +18,7 @@ grid;
 реализовано api для использования данных с сервера;
 использованы функциональные компоненты React.
 
-Ссылка на GitHub Pages:https://idillia8709.github.io/mesto-react-regist-autor
+Ссылка на GitHub Pages:https://idillia8709.github.io/react-mesto-auth
 
 Команда для запуска и работы с проектом: 
 - npm start
