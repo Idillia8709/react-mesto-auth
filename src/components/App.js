@@ -25,10 +25,7 @@ export default function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [userData, setUserData] = useState({
-    email: '',
-    password: '',
-  });
+  const [userData, setUserData] = useState('');
   const [isInfoTooltip, setIsInfoTooltip] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -51,52 +48,58 @@ export default function App() {
       .catch(err => console.log('Ошибка:', err.message));
   }, []);
 
+  function checkToken(jwt) {
+    apiAuth.checkToken(jwt)
+      .then((res) => {
+        setUserData(res.data.email);
+        setLoggedIn(true);
+        history.push('/');
+      })
+      .catch(() => { history.push('/sign-in') });
+  }
+
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
       return
     }
-    apiAuth.checkToken(jwt)
-      .then(({ email, password }) => {
-        setUserData({ email, password });
-        setLoggedIn(true);
-      })
-      .catch(() => { history.push('/sign-in') });
+    checkToken(jwt);
   }
 
-  function handleLogin({email, password}) {
+  function handleLogin({ email, password }) {
     return apiAuth
       .authorize(email, password)
       .then((res) => {
-        setUserData({ email, password });
-        setLoggedIn(true);
-        history.push('/');
         localStorage.setItem('jwt', res.token);
+        checkToken(res.token);
       })
-      .catch(err => console.log('Ошибка:', err.message));
+      .catch(err => {
+        console.log('Ошибка:', err.message);
+      });
   }
 
 
-  function handleRegister({email, password}) {
+  function handleRegister({ email, password }) {
     return apiAuth
-    .register(email, password)
+      .register(email, password)
       .then(() => {
         setIsRegistered(true);
+        setIsInfoTooltip(true);
         history.push('/sing-in');
       })
-      .catch(err => console.log('Ошибка:', err.message));
+      .catch(err => {
+        setIsRegistered(false);
+        setIsInfoTooltip(true);
+        console.log('Ошибка:', err.message);
+      });
   }
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    setUserData({
-      email: '',
-      password: '',
-    });
+    setUserData('');
     history.push('/sign-in');
   }
-
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -112,7 +115,7 @@ export default function App() {
     if (owner) {
       api.deleteCard(card._id)
         .then(() => {
-         setCards(cards => cards.filter(({ _id }) => _id !== card._id)) 
+          setCards(cards => cards.filter(({ _id }) => _id !== card._id))
           closeAllPopups();
         })
         .catch(err => console.log('Ошибка:', err.message))

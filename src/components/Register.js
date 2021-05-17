@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Register({ onRegister, onShowInfoTooltip }) {
+export default function Register({ onRegister}) {
   const [registerData, setRegisterData] = useState({
     email: '',
     password: '',
   });
-  const [message, setMessage] = useState('');
-  console.log(arguments);
   function handleChange(event) {
     const { name, value } = event.target;
     setRegisterData({
@@ -16,24 +14,12 @@ export default function Register({ onRegister, onShowInfoTooltip }) {
     });
   }
 
-  function clearForm() {
-    setRegisterData({
-      email: '',
-      password: '',
-    });
-    setMessage('');
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     if (!registerData.email || !registerData.password) {
-      onShowInfoTooltip();
       return;
     }
-    onRegister(registerData)
-    .catch(err => setMessage(err.message || 'Что-то пошло не так!'));
-    onShowInfoTooltip(); 
-    clearForm();
+    onRegister(registerData);
   }
 
 
@@ -74,7 +60,7 @@ export default function Register({ onRegister, onShowInfoTooltip }) {
           </button>
       </form>
       <p className="register__link">Уже зарегистрированы?
-      <Link className="register__signup" to="/sign-up">Войти</Link>
+      <Link className="register__signup" to="/sign-in">Войти</Link>
       </p>
     </div>
 

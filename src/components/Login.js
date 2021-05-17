@@ -5,8 +5,7 @@ export default function Login({ onLogin }) {
     email: '',
     password: '',
   });
-  const [message, setMessage] = useState('');
-
+ 
   function handleChange(event) {
     const { name, value } = event.target;
     setLoginData({
@@ -15,23 +14,12 @@ export default function Login({ onLogin }) {
     });
   }
 
-  function clearForm() {
-    setLoginData({
-      email: '',
-      password: '',
-    });
-    setMessage('');
-  }
-
   function handleSubmit(event) {
-    setMessage('');
     event.preventDefault();
     if (!loginData.email || !loginData.password) {
       return;
     }
     onLogin(loginData)
-      .catch(err => setMessage(err.message || 'Что-то пошло не так!'));
-    clearForm();
 
   }
 
